@@ -54,7 +54,7 @@ public class UserDao {
         // id를 조건으로 한 쿼리의 결과가 있으면 User 오브젝트를 만들고 값을 넣어준다.
         User user = null;
 
-        if(rs.next()){
+        if (rs.next()) {
             user = new User();
             user.setId(rs.getString("id"));
             user.setName(rs.getString("name"));
@@ -66,17 +66,36 @@ public class UserDao {
         c.close();
 
         // 결과가 없으면 User는 null 상태 그대로, 이를 확인해서 예외를 던져준다.
-        if(user == null) throw new EmptyResultDataAccessException(1);
+        if (user == null) throw new EmptyResultDataAccessException(1);
         return user;
     }
 
     public void deleteAll() throws SQLException {
-        Connection c = dataSource.getConnection();
-        PreparedStatement ps = c.prepareStatement("delete from users");
+        Connection c = null;
+        PreparedStatement ps = null;
+        try {
+            c = dataSource.getConnection();
+            ps = c.prepareStatement("delete from users");
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    System.out.println(e.getStackTrace());
+                }
+            }
 
-        ps.executeUpdate();
-        ps.close();
-        c.close();
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (SQLException e) {
+                    System.out.println(e.getStackTrace());
+                }
+            }
+        }
     }
 
     public int getCount() throws SQLException {
