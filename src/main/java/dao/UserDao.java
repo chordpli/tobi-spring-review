@@ -14,6 +14,8 @@ public class UserDao {
         this.dataSource = dataSource;
     }
 
+    public UserDao() {
+    }
 
     public UserDao(ConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
