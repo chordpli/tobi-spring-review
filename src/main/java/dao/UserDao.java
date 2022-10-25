@@ -62,7 +62,7 @@ public class UserDao {
         return user;
     }
 
-    public void delteAll() throws SQLException {
+    public void deleteAll() throws SQLException {
         Connection c = dataSource.getConnection();
         PreparedStatement ps = c.prepareStatement("delete from users");
 
