@@ -22,7 +22,7 @@ public class JdbcContext {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getStackTrace());
-        }finally {
+        } finally {
             if (ps != null) {
                 try {
                     ps.close();
@@ -39,4 +39,15 @@ public class JdbcContext {
             }
         }
     }
+
+    public void executeSql(final String query) throws SQLException {
+        workWithStatementStrategy(
+                new StatementStrategy() { // 변하지 않는 콜백 클래스 정의와 오브젝트 생성
+                    public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
+                        return c.prepareStatement(query);
+                    }
+                }
+        );
+    }
+
 }
