@@ -7,9 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserDaoTest {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        ConnectionMaker connectionMaker = new LikelionConnectionMaker();
-
-        UserDao userDao = new UserDao(connectionMaker);
+        UserDao userDao = new DaoFactory().userDao();
     }
 
 }
