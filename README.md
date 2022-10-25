@@ -78,5 +78,9 @@ public class User {
 
 ## Commit
 #### [commit!] 중복 코드의 메소드 추출
-
+#### [commit!] DB 커넥션 만들기의 독립
+  - [commit!] 상속을 위한 확장
+    - 상속이 문제가 된다.
+    - 자바는 다중 상속을 허용하지 않음.
+    - 상하위 클래스의 관계가 밀접
 </details>
