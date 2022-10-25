@@ -3,6 +3,7 @@ package dao;
 import com.mysql.cj.protocol.Resultset;
 import domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -14,11 +15,14 @@ public class UserDao {
 
     private JdbcContext jdbcContext;
 
+    private JdbcTemplate jdbcTemplate;
+
     public void setJdbcContext(JdbcContext jdbcContext) {
         this.jdbcContext = jdbcContext;
     }
 
     public void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.dataSource = dataSource;
     }
 
