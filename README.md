@@ -248,7 +248,6 @@ public class User {
 - [COMMIT!] 익명 내부 클래스
 </details>
 
-
 # 3.4 컨텍스트와 DI
 <details>
 <summary> 더보기 </summary>
