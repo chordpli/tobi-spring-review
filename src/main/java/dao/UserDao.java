@@ -4,6 +4,7 @@ import com.mysql.cj.protocol.Resultset;
 import domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -108,7 +109,7 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        this.jdbcContext.executeSql("delete from users"); // 변하는 sql 문장
+        this.jdbcTemplate.update("delete from users");
     }
 
 
