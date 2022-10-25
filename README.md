@@ -86,7 +86,7 @@ public class User {
 </details>
 
 # 1.3 DAO의 확장
-> https://chordplaylist.tistory.com/141
+> https://chordplaylist.tistory.com/141 <br>
 > https://chordplaylist.tistory.com/142
 <details>
 <summary> 더보기 </summary>
