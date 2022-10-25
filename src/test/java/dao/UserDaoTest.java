@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,6 +26,10 @@ class UserDaoTest {
     @Autowired
     ApplicationContext context;
     UserDao userDao;
+
+    User user01 = new User("junho", "김준호", "1234");
+    User user02 = new User("pli", "플리", "1234");
+    User user03 = new User("chord", "코드", "1234");
 
     @BeforeEach
     void setUp() throws SQLException {
@@ -80,5 +85,30 @@ class UserDaoTest {
         assertThrows(EmptyResultDataAccessException.class, ()->{
             userDao.get("hello");
         });
+    }
+
+    @Test
+    void getAll() throws SQLException, ClassNotFoundException {
+        userDao.add(user01);
+
+        List<User> users1 = userDao.getAll();
+        assertEquals(1, users1.size());
+        checkSameUser(user01, users1.get(0));
+
+        userDao.add(user02);
+        List<User> users2 = userDao.getAll();
+        assertEquals(2, users2.size());
+        checkSameUser(user01, users1.get(0));
+        checkSameUser(user02, users1.get(1));
+
+        userDao.add(user03);
+        List<User> users3 = userDao.getAll();
+        assertEquals(3, users3.size());
+    }
+
+    private void checkSameUser(User user1, User user2){
+        assertEquals(user2.getId(), user1.getId());
+        assertEquals(user2.getName(), user1.getName());
+        assertEquals(user2.getPassword(), user1.getPassword());
     }
 }

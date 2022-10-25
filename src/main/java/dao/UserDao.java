@@ -7,6 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -36,6 +37,14 @@ public class UserDao {
         this.connectionMaker = connectionMaker;
     }
 
+    RowMapper<User> rowMapper = new RowMapper<User>() {
+        @Override
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            return user;
+        }
+    };
+
     public void add(final User user) throws SQLException, ClassNotFoundException {
         this.jdbcContext.workWithStatementStrategy(
                 new StatementStrategy() {
@@ -52,33 +61,8 @@ public class UserDao {
     }
 
     public User get(String id) throws ClassNotFoundException, SQLException {
-        Connection c = dataSource.getConnection();
-
-        PreparedStatement ps = c.prepareStatement(
-                "select * from users where id =?"
-        );
-        ps.setString(1, id);
-
-        ResultSet rs = ps.executeQuery();
-
-        // 테스트를 성공시키기 위한 코드의 수정
-        // id를 조건으로 한 쿼리의 결과가 있으면 User 오브젝트를 만들고 값을 넣어준다.
-        User user = null;
-
-        if (rs.next()) {
-            user = new User();
-            user.setId(rs.getString("id"));
-            user.setName(rs.getString("name"));
-            user.setPassword(rs.getString("password"));
-        }
-
-        rs.close();
-        ps.close();
-        c.close();
-
-        // 결과가 없으면 User는 null 상태 그대로, 이를 확인해서 예외를 던져준다.
-        if (user == null) throw new EmptyResultDataAccessException(1);
-        return user;
+        String sql = "select * from users where id = ?";
+        return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
