@@ -137,6 +137,59 @@ public class User {
 - [COMMIT!] DaoFactory를 사용하는 애플리케이션 컨텍스트
 
 #### [COMMIT!] 애플리케이션 컨텍스트의 동작 방식
-- 어떤 ConnectionMaker를 구현 클래스를 사용할지를 결정하는 기능이 중복.
-- 중복 문제를 해결하기 위해서는 분리하는 방법이 가장 좋다.
+- 클라이언트는 구체적인 팩토리 클래스를 알 필요가 없다.
+  - 애플리케이션 컨텍스트를 이용하면 일관된 방식으로 원하는 오브젝ㅌ르르 가져올 수 있따.
+- 애플리케이션 컨텍스트는 종합 IoC 서비스를 제공
+- 애플리케이션 컨텍스트는 빈을 검색하는 다양한 방법 제공
+
+</details>
+
+# 1.6 싱글톤 레지스트리와 오브젝트 스코프
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] 싱글톤 레지스트리로서의 애플리케이션 컨텍스트
+- 애플리케이션 컨텍스트는 싱글톤을 저장하고 관리하는 싱글톤 레지스트리기도 하다.
+- 
+- [COMMIT!] 서버 애플리케이션과 싱글톤
+  - 서블릿 클래스당 하나의 오브젝트만 만들어주고, 사용자의 요청을 담당하는 여러 스레드에서 하나의 오브젝트를 공유해 동시 사용.
+  - 애플리케이션 안에 제한된 수, 대개 한 개의 오브젝트만 만들어서 사용하는것이 싱글톤 패턴의 원리.
+- [COMMIT!] 싱글톤 패턴의 한계
+
+</details>
+
+# 1.8 XML을 이용한 설정
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] DataSource 인터페이스로 변환
+- [COMMIT!] DataSource 인터페이스 적용
+- [COMMIT!] 자바 코드 설정 방식
+
+</details>
+
+# 2.3.2 테스트 결과의 일관성
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] DeleteAll()의 getCount() 추가
+- [COMMIT!] deleteAll()
+  - USER 테이블의 모든 레코드를 삭제
+- [COMMIT!] getCount()
+    - USER 테이블의 레코드 갯수를 반환
+- [COMMIT!] DeleteAll()과 getCount()의 테스트
+#### [COMMIT!] DeleteAll()과 getCount()의 테스트
+</details>
+
+# 2.3.3 포괄적인 테스트
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] getCount()테스트
+#### [COMMIT!] addAndGet() 테스트 보완
+
 </details>
