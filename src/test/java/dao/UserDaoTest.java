@@ -36,14 +36,20 @@ class UserDaoTest {
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
 
-        User user01 = new User();
-
-        user01.setId("01");
-        user01.setName("김준호");
-        user01.setPassword("1234");
+        User user01 = new User("chord", "코드", "1234");
+        User user02 = new User("pli", "플리", "1234");
+        userDao.deleteAll();
+        assertEquals(0, userDao.getCount());
 
         userDao.add(user01);
-        assertEquals(1, userDao.getCount());
+        userDao.add(user02);
+        User userget1 = userDao.get(user01.getId());
+        assertEquals(userget1.getName(), user01.getName());
+        assertEquals(userget1.getPassword(), user01.getPassword());
+
+        User userget2 = userDao.get(user02.getId());
+        assertEquals(userget2.getName(), user02.getName());
+        assertEquals(userget2.getPassword(), user02.getPassword());
     }
 
     @Test
