@@ -244,4 +244,8 @@ public class User {
 - 두가지 불만
   - DAO 메소드마다 새로운 StatementStrategy 구현 클래스를 만들어야 하는 점
   - DAO 메소드에서 StatementStrategy에 전달할 User와 같은 부가적인 정보가 있는 경우, 이를 위해 오브젝트를 전달받는 생성자와 이를 저장해둘 인스턴스 변수를 번거롭게 만들어야 한다는 점.
+- [COMMIT!] 로컬 클래스
+  - AddStatement가 사용될 곳이 하나라면, 클래스 파일이 하나 줄고, 메소드 안에서 PreparedStatement 생성 로직을 함께 볼 수 있으니 코드를 이해하기도 좋다.
+  - 내부 클래스이므로 선언된 곳의 정보에 접근할 수 있다.
+- [COMMIT!] 익명 내부 클래스
 </details>
