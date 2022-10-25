@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -70,7 +71,14 @@ class UserDaoTest {
 
         userDao.add(user03);
         assertEquals(3, userDao.getCount());
+    }
 
-        
+    @Test
+    public void getUserFailure() throws SQLException, ClassNotFoundException {
+        userDao.deleteAll();
+
+        assertThrows(EmptyResultDataAccessException.class, ()->{
+            userDao.get("hello");
+        });
     }
 }
