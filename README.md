@@ -77,10 +77,33 @@ public class User {
 
 
 ## Commit
-#### [commit!] 중복 코드의 메소드 추출
-#### [commit!] DB 커넥션 만들기의 독립
-  - [commit!] 상속을 위한 확장
+#### [COMMIT!] 중복 코드의 메소드 추출
+#### [COMMIT!] DB 커넥션 만들기의 독립
+  - [COMMIT!] 상속을 위한 확장
     - 상속이 문제가 된다.
     - 자바는 다중 상속을 허용하지 않음.
     - 상하위 클래스의 관계가 밀접
+</details>
+
+# 1.3 DAO의 확장
+
+<details>
+<summary> 더보기 </summary>
+
+## UserDao의 관심사항
+- DB와 연결을 위한 커넥션을 어떻게 가져올까?
+- 사용자 등록을 위해 DB에 보낼 SQL 문장을 담을 Statement를 만들고 실행하는 것
+- 작업이 끝나면 사용한 리소스인 Statement와 Connection 오브젝트를 닫아줘서 소중한 공유 리소스를 시스템에 돌려주는 것
+
+
+## Commit
+#### [COMMIT!] 클래스의 분리
+- SimpleConnectionMaker 클래스 생성
+  - 상속을 이용한 방식을 사용하지 않으니 추상 클래스로 만들지 않는다.
+- UserDao가 SimpleConnectionMaker에 종속되어 자유로운 확장이 불가
+#### [COMMIT!] 인터페이스 도입
+- 초기에 한 번 어떤 클래스의 오브젝트를 사용할지를 결정하는 생성자의 코드는 제거되지 않고 남아있다.
+- 다시 원점, 자유로운 DB 커넥션 확장 기능을 가진 UserDao를 제공할 수 없다.
+#### [-ING!] 관계 설정 책임의 분리
+
 </details>
