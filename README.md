@@ -190,6 +190,66 @@ public class User {
 #### [COMMIT!] getCount()테스트
 #### [COMMIT!] addAndGet() 테스트 보완
 - User 하나를 더 추가해서 두 개의 User를 add()하고, 각 User의 id를 파라미터로 전달해서 get()을 실행
+#### [COMMIT!] get()예외조건에 대한 테스트
+- get() 메소드에 전달된 id 값에 해당하는 사용자 정보가 없을 때,
+- Junit에서 예외 조건 테스트 위한 방법 제공.
+  - assertThrows(EmptyResultDataAccessException.class, ()->{ });
+#### [COMMIT!] 테스트를 성공시키기 위한 코드의 수정
+#### [COMMIT!] 포괄적인 테스트
+- 항상 네거티브 테스트를 먼저 만들어라.
+</details>
 
+# 3.1 다시 보는 초난감 DAO
+<details>
+<summary> 더보기 </summary>
 
+## Commit
+#### [COMMIT!] 예외처리 기능을 갖춘 DAO
+- [COMMIT!] JDBC 수정 기능의 예외처리 코드
+  - PreparedStatement를 처리하는 중 예외가 발생하면, 메소드 실행을 끝마치지 못하면서 Connection과 PreparedStatement의 close() 메소드가 실행되지 않아서 제대로 리소스가 반환되지 않을 수 있다.
+- [COMMIT!] _JDBC 조회 기능의 예외처리 코드_
+  - ResultSet 추가
+
+</details>
+
+# 3.2 변하는 것과 변하지 않는 것
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] JDBC try/catch/finally 코드의 문제점
+- 2중으로 중첩 및 모든 메소드마다 반복되는 상황
+#### [COMMIT!] 분리와 재사용을 위한 디자인 패턴 적용
+- [COMMIT!] 메소드 추출
+  - 변하는 부분을 메소드로 빼는 것.
+- [COMMIT!] 템플릿 메소드 패턴의 적용
+    - 개방 폐쇄 원칙을 그럭저럭 지키는 구조
+    - 하지만 템플릿 메소드 패턴으로의 접근 제한이 많다.
+- [COMMIT!] 전략 패턴의 적용
+  - 오브젝트를 아예 둘로 분리하고 클래스 레벨에서는 인터페이스를 통해서만 의존하도록 만드는 전략 패턴
+  - 컨텍스트가 StatementStrategy 인터페이스뿐 아니라 특정 구현 클래스인 DeleteAllStatement를 직접 알고 있다는 건, 전략 패턴에도 OCP에도 잘 들어맞는다고 볼 수 없다.
+- [COMMIT!] DI 적용을 위한 클라이언트/컨텍스트 분리
+  - 의존관계와 책임으로 볼 때 이상적인 클라이언트/컨텍스트 관계를 갖고 있다.
+  - 클라이언트가 컨텍스트가 사용할 전략을 정해서 전달하는 면에서 DI구조라고 이해할 수도 있다.
+</details>
+
+# 3.3 JDBC 전략 패턴의 최적화
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] JDBC try/catch/finally 코드의 문제점
+- 2중으로 중첩 및 모든 메소드마다 반복되는 상황
+#### [COMMIT!] 분리와 재사용을 위한 디자인 패턴 적용
+- [COMMIT!] 메소드 추출
+    - 변하는 부분을 메소드로 빼는 것.
+- [COMMIT!] 템플릿 메소드 패턴의 적용
+    - 개방 폐쇄 원칙을 그럭저럭 지키는 구조
+    - 하지만 템플릿 메소드 패턴으로의 접근 제한이 많다.
+- [COMMIT!] 전략 패턴의 적용
+    - 오브젝트를 아예 둘로 분리하고 클래스 레벨에서는 인터페이스를 통해서만 의존하도록 만드는 전략 패턴
+    - 컨텍스트가 StatementStrategy 인터페이스뿐 아니라 특정 구현 클래스인 DeleteAllStatement를 직접 알고 있다는 건, 전략 패턴에도 OCP에도 잘 들어맞는다고 볼 수 없다.
+- [COMMIT!] DI 적용을 위한 클라이언트/컨텍스트 분리
+    - 의존관계와 책임으로 볼 때 이상적인 클라이언트/컨텍스트 관계를 갖고 있다.
+    - 클라이언트가 컨텍스트가 사용할 전략을 정해서 전달하는 면에서 DI구조라고 이해할 수도 있다.
 </details>
