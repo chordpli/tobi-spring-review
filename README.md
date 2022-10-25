@@ -151,7 +151,6 @@ public class User {
 ## Commit
 #### [COMMIT!] 싱글톤 레지스트리로서의 애플리케이션 컨텍스트
 - 애플리케이션 컨텍스트는 싱글톤을 저장하고 관리하는 싱글톤 레지스트리기도 하다.
-- 
 - [COMMIT!] 서버 애플리케이션과 싱글톤
   - 서블릿 클래스당 하나의 오브젝트만 만들어주고, 사용자의 요청을 담당하는 여러 스레드에서 하나의 오브젝트를 공유해 동시 사용.
   - 애플리케이션 안에 제한된 수, 대개 한 개의 오브젝트만 만들어서 사용하는것이 싱글톤 패턴의 원리.
@@ -180,7 +179,6 @@ public class User {
   - USER 테이블의 모든 레코드를 삭제
 - [COMMIT!] getCount()
     - USER 테이블의 레코드 갯수를 반환
-- [COMMIT!] DeleteAll()과 getCount()의 테스트
 #### [COMMIT!] DeleteAll()과 getCount()의 테스트
 </details>
 
@@ -191,5 +189,7 @@ public class User {
 ## Commit
 #### [COMMIT!] getCount()테스트
 #### [COMMIT!] addAndGet() 테스트 보완
+- User 하나를 더 추가해서 두 개의 User를 add()하고, 각 User의 id를 파라미터로 전달해서 get()을 실행
+
 
 </details>
