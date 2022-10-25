@@ -169,34 +169,30 @@ public class User {
 
 </details>
 
-# 2.3.2 테스트 결과의 일관성
+# 2.3 개발자를 위한 테스팅 프레임워크 JUnit
 <details>
 <summary> 더보기 </summary>
 
 ## Commit
-#### [COMMIT!] DeleteAll()의 getCount() 추가
-- [COMMIT!] deleteAll()
-  - USER 테이블의 모든 레코드를 삭제
-- [COMMIT!] getCount()
-    - USER 테이블의 레코드 갯수를 반환
-#### [COMMIT!] DeleteAll()과 getCount()의 테스트
-</details>
+#### [COMMIT!] 테스트 결과의 일관성
+- [COMMIT!] DeleteAll()의 getCount() 추가
+  - [COMMIT!] deleteAll()
+    - USER 테이블의 모든 레코드를 삭제
+  - [COMMIT!] getCount()
+      - USER 테이블의 레코드 갯수를 반환
+- [COMMIT!] DeleteAll()과 getCount()의 테스트
 
-# 2.3.3 포괄적인 테스트
-<details>
-<summary> 더보기 </summary>
-
-## Commit
-#### [COMMIT!] getCount()테스트
-#### [COMMIT!] addAndGet() 테스트 보완
-- User 하나를 더 추가해서 두 개의 User를 add()하고, 각 User의 id를 파라미터로 전달해서 get()을 실행
-#### [COMMIT!] get()예외조건에 대한 테스트
-- get() 메소드에 전달된 id 값에 해당하는 사용자 정보가 없을 때,
-- Junit에서 예외 조건 테스트 위한 방법 제공.
-  - assertThrows(EmptyResultDataAccessException.class, ()->{ });
-#### [COMMIT!] 테스트를 성공시키기 위한 코드의 수정
 #### [COMMIT!] 포괄적인 테스트
-- 항상 네거티브 테스트를 먼저 만들어라.
+- [COMMIT!] getCount()테스트
+- [COMMIT!] addAndGet() 테스트 보완
+  - User 하나를 더 추가해서 두 개의 User를 add()하고, 각 User의 id를 파라미터로 전달해서 get()을 실행
+- [COMMIT!] get()예외조건에 대한 테스트
+  - get() 메소드에 전달된 id 값에 해당하는 사용자 정보가 없을 때,
+  - Junit에서 예외 조건 테스트 위한 방법 제공.
+    - assertThrows(EmptyResultDataAccessException.class, ()->{ });
+- [COMMIT!] 테스트를 성공시키기 위한 코드의 수정
+- [COMMIT!] 포괄적인 테스트
+  - 항상 네거티브 테스트를 먼저 만들어라.
 </details>
 
 # 3.1 다시 보는 초난감 DAO
