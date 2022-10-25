@@ -44,7 +44,10 @@ public class User {
 
 </details>
 
-# UserDao
+# 1.1 초난감 DAO
+
+<details>
+<summary> 더보기 </summary>
 
 ## JDBC 순서
 - DB 연결을 위한 Connection 을 가져온다.
@@ -56,3 +59,24 @@ public class User {
 작업을 마친 후 반드시 닫아준다.
 - JDBC API가 만들어내는 예외(exception)를 잡아서 직접 처리하거나, 
 메소드에 throws를 선언해서 예외가 발생하면 메소드 밖으로 던지게 한다.
+
+
+## Class.ForName 수정사항
+- "com.mysql.jdbc.Driver" - > "com.mysql.cj.jdbc.Driver"
+</details>
+
+# 1.2 DAO의 분리
+
+<details>
+<summary> 더보기 </summary>
+
+## UserDao의 관심사항
+- DB와 연결을 위한 커넥션을 어떻게 가져올까?
+- 사용자 등록을 위해 DB에 보낼 SQL 문장을 담을 Statement를 만들고 실행하는 것
+- 작업이 끝나면 사용한 리소스인 Statement와 Connection 오브젝트를 닫아줘서 소중한 공유 리소스를 시스템에 돌려주는 것
+
+
+## Commit
+#### [commit!] 중복 코드의 메소드 추출
+
+</details>
