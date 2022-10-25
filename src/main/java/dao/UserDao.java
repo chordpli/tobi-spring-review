@@ -104,11 +104,15 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
+        executeSql("delete from users"); // 변하는 sql 문장
+    }
+
+    private void executeSql(final String query) throws SQLException {
         this.jdbcContext.workWithStatementStrategy(
-                new StatementStrategy() {
+                new StatementStrategy() { // 변하지 않는 콜백 클래스 정의와 오브젝트 생성
                     @Override
                     public PreparedStatement makePreparedStatement(Connection c) throws SQLException {
-                        return c.prepareStatement("delete from users");
+                        return c.prepareStatement(query);
                     }
                 }
         );
