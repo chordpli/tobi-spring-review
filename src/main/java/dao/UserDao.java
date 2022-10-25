@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.List;
 
 public class UserDao {
     private ConnectionMaker connectionMaker;
@@ -101,6 +102,10 @@ public class UserDao {
 
     public int getCount() throws SQLException {
         return this.jdbcTemplate.queryForObject("select count(*) from users", Integer.class);
+    }
+
+    public List<User> getAll(){
+        return this.jdbcTemplate.query("select * from users", rowMapper);
     }
 
 }
