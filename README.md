@@ -49,7 +49,7 @@ public class User {
 ## JDBC 순서
 - DB 연결을 위한 Connection 을 가져온다.
 - SQL을 담은 Statement 또는 PreparedStatement를 만든다.
-- 만들어진 atement 를 실행한다.
+- 만들어진 Statement 를 실행한다.
 - 조회의 경우 SQL 쿼리의 실행 결과를 ResultSet으로 받아서 
 정보를 저장할 오브젝트(여기서는 user)에 옮겨준다.
 - 작업 중에 생성된 Connection, Statement, ResultSet 같은 리소스는 
