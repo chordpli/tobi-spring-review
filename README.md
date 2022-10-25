@@ -90,12 +90,6 @@ public class User {
 <details>
 <summary> 더보기 </summary>
 
-## UserDao의 관심사항
-- DB와 연결을 위한 커넥션을 어떻게 가져올까?
-- 사용자 등록을 위해 DB에 보낼 SQL 문장을 담을 Statement를 만들고 실행하는 것
-- 작업이 끝나면 사용한 리소스인 Statement와 Connection 오브젝트를 닫아줘서 소중한 공유 리소스를 시스템에 돌려주는 것
-
-
 ## Commit
 #### [COMMIT!] 클래스의 분리
 - SimpleConnectionMaker 클래스 생성
@@ -108,5 +102,13 @@ public class User {
 - 클래스 사이의 관계는 코드에 다른 클래스 이름이 나타나기 때문에 만들어지는 것.
 - 하지만 오브젝트 사이의 관계는 그렇지 않다.
 - 코드에서는 특정 클래스를 전혀 알지 못하더라도 해당 클래스가 구현한 인터페이스를 사용했다면, 그 클래스의 오브젝트를 인터페이스 타입으로 받아서 사용할 수 있다.
+</details>
 
+# 1.4 제어의 역전(IoC)
+
+<details>
+<summary> 더보기 </summary>
+
+## Commit
+#### [COMMIT!] 오브젝트 팩토리
 </details>
