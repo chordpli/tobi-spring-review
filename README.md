@@ -106,7 +106,8 @@ public class User {
 </details>
 
 # 1.4 제어의 역전(IoC)
-
+> https://chordplaylist.tistory.com/143
+> https://chordplaylist.tistory.com/144
 <details>
 <summary> 더보기 </summary>
 
