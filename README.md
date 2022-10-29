@@ -125,6 +125,8 @@ public class User {
 </details>
 
 # 1.5 스프링의 IoC
+> https://chordplaylist.tistory.com/145 <br>
+> https://chordplaylist.tistory.com/146
 <details>
 <summary> 더보기 </summary>
 
